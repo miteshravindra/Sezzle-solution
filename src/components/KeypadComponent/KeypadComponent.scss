@@ -1,0 +1,39 @@
+.keypad {
+  float: left;
+  margin-top: 20px;
+  .keypad-wrapper {
+    color: #ffffff;
+    width: 87%;
+    margin: 0 auto;
+    .keypad-row {
+      float: left;
+      width: 100%;
+      ul {
+        list-style-type: none;
+        margin: 0;
+        float: left;
+        padding: 0;
+        li {
+          float: left;
+          padding: 25px 35px 25px 35px;
+          font-size: 30px;
+          font-weight: 500;
+          margin-left: 15px;
+          margin-top: 15px;
+          border-radius: 30%;
+          width: 25px;
+          cursor: pointer;
+          &:first-child {
+            margin-left: 0;
+          }
+          &.number {
+            background-color: #3f4656;
+          }
+          &.symbol {
+            background-color: #fe9505;
+          }
+        }
+      }
+    }
+  }
+}

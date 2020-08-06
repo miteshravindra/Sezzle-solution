@@ -1,0 +1,40 @@
+body {
+  background-color: #282c34;
+}
+
+.App {
+  // text-align: center;
+  // background-color: #282c34;
+  .App-header {
+    color: white;
+    text-align: center;
+    font-size: 40px;
+    font-weight: 500;
+    padding: 20px 0;
+  }
+  .calculator-wrapper {
+    margin-top: 100px;
+    width: 35%;
+    margin: 0 auto;
+    text-align: center;
+    height: 440px; //  background-color: #fff;
+    .visible-wrapper {
+      float: left;
+      padding: 35px 20px 20px 20px;
+      background-color: #fff;
+      border-radius: 30px;
+      .c-symbol {
+        font-size: 30px;
+        background-color: #3f4656;
+        font-size: 30px;
+        background-color: #3f4656;
+        padding: 15px;
+        border-radius: 30%;
+        width: 70px;
+        &:focus {
+          outline: none;
+        }
+      }
+    }
+  }
+}
