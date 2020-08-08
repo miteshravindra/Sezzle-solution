@@ -2,18 +2,24 @@ import React, { Component } from "react";
 import KeypadComponent from "./components/KeypadComponent/KeypadComponent";
 import ResultComponent from "./components/ResultComponent/ResultComponent";
 import "./App.scss";
+import ResultDisplay from "./components/ResultDisplayComponent/ResultDisplay";
+import { socket } from "./index";
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
       result: "",
+      displayResult: [],
     };
   }
   calculate = () => {
     try {
       this.setState({
         result: (eval(this.state.result) || "") + "",
+      });
+      socket.emit("chat", {
+        data: `${this.state.result} = ${eval(this.state.result)}`,
       });
     } catch (e) {
       this.setState({
@@ -41,16 +47,28 @@ class App extends Component {
       this.delete();
     } else this.setState({ result: this.state.result + symbol });
   };
+
+  componentDidMount = () => {
+    socket.on("broadcast", ({ data }) => {
+      let newDisplayResult = [...this.state.displayResult, data];
+      this.setState({
+        displayResult: newDisplayResult,
+      });
+    });
+  };
   render() {
     return (
       <div className="App">
-        <header className="App-header">Calculator</header>
-        <div className="calculator-wrapper">
-          <div className="visible-wrapper">
-            <ResultComponent result={this.state.result} />
-            <KeypadComponent onClickhandler={this.onClickhandler} />
+        <div className="Calculator clearfix">
+          <header className="Calculator-header">Calculator</header>
+          <div className="calculator-wrapper">
+            <div className="visible-wrapper">
+              <ResultComponent result={this.state.result} />
+              <KeypadComponent onClickhandler={this.onClickhandler} />
+            </div>
           </div>
         </div>
+        <ResultDisplay displayResult={this.state.displayResult} />
       </div>
     );
   }
