@@ -12,7 +12,6 @@ var io = socket(server);
 io.on("connection", (socket) => {
   // Handle chat event
   socket.on("chat", function (data) {
-    console.log(data);
     // Broadcast the data to every client
     io.emit("broadcast", data);
   });
