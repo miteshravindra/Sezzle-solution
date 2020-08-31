@@ -6,7 +6,7 @@ import * as serviceWorker from "./serviceWorker";
 import io from "socket.io-client";
 
 // Make connection
-export var socket = io("http://localhost:3000");
+export var socket = io("http://localhost:3001");
 
 ReactDOM.render(
   <React.StrictMode>
