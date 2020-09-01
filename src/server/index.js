@@ -1,10 +1,14 @@
 var express = require("express");
 var socket = require("socket.io");
+require("dotenv").config();
+
+var port = process.env.PORT || 5000;
+console.log(port);
 
 // App setup
 var app = express();
-var server = app.listen(3001, function () {
-  console.log("listening for requests on port 3001,");
+var server = app.listen(port, function () {
+  console.log("listening for requests on port 5000,");
 });
 
 // Socket setup & pass server
